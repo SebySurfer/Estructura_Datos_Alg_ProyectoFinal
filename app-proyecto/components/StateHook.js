@@ -1,6 +1,8 @@
 import { StyleSheet, Text, View, Button, TextInput, SafeAreaView } from 'react-native'
 import React, {useState} from 'react'
 
+import ButtonGrid from './MyButton';
+
 export default function StateHook() {
     const [input, setInput] = useState("");
     const [display, setDisplay] = useState("")
@@ -23,7 +25,11 @@ export default function StateHook() {
       value={input}
       />
 
-      <Button title='Set Input' onPress={updateDisplay}/>
+      <ButtonGrid buttons={[
+      { name: "Button 1", toPass:updateDisplay},
+      { name: "Button 2", toPass:updateDisplay},
+      // Add more buttons as needed
+    ]} />
 
     </View>
     </SafeAreaView>
