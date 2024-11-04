@@ -46,6 +46,12 @@ const InputChecker = ( input, setInput, setAction, setErrorHandler, needsNumber,
     
         }
 
+        /**
+         * StringInputChecker
+         * NumberInputChecker
+         * DecimalInputChecker
+         */
+
 
 const styles = StyleSheet.create({})
 
