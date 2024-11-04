@@ -15,10 +15,38 @@ import ButtonGrid from './MyButton';
 export default function StateHook() {
     const [input, setInput] = useState("");
     const [display, setDisplay] = useState("")
+    const [errorHandler, setErrorHandler] = useState("");
 
-    const updateDisplay = () => {
-      setDisplay(input);
-      setInput("");
+    const updateDisplay = (needsNumber) => {
+
+    if(needsNumber === true){
+        let condition = false;
+
+        for (let i = 0; i < input.length; i++){
+
+            let toNumber = Number(input.slice(i, i+1)); // Slices each part of the string indiv, and converts it to a numner
+            //If there's a conversion of a char, it will give out NaN (Not a Number)
+            if(isNaN(toNumber)){ // Checks if its NOT a Number
+                condition = true;
+            }
+
+        }
+
+        if(condition){
+            setErrorHandler("You need to send a number")
+        } else {
+            setErrorHandler("")
+            setDisplay(input);
+            setInput("");
+        }
+
+    } else {
+        setErrorHandler("")
+        setDisplay(input);
+        setInput("");
+
+    }
+
     }
 
   return (
@@ -34,11 +62,13 @@ export default function StateHook() {
       value={input}
       />
 
+      <Text>{errorHandler}</Text>
+
       <ButtonGrid buttons={[
-      { name: "Button 1", toPass:updateDisplay},
-      { name: "Button 2", toPass:updateDisplay},
-      { name: "Button 3", toPass:updateDisplay},
-      { name: "Button 4", toPass:updateDisplay},
+      { name: "Button 1", toPass: () => updateDisplay(true)},
+      { name: "Button 2", toPass: () => updateDisplay(true)},
+      { name: "Button 3", toPass: () => updateDisplay(false)},
+      { name: "Button 4", toPass: () => updateDisplay(false)},
       // Add more buttons as needed
     ]} />
 
