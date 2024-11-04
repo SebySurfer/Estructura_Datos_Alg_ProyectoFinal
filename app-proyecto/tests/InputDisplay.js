@@ -14,7 +14,7 @@ import BoxInput from '../components/BoxInput.js';
 
 
 
-export default function TestScreen() {
+export default function InputDisplay() {
     const [input, setInput] = useState("");
     const [display, setDisplay] = useState("")
     const [errorHandler, setErrorHandler] = useState("");
