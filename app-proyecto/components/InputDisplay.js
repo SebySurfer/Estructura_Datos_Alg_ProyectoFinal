@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 
 import ButtonsDisplay from './ButtonsDisplay.js';
 import InputChecker from './InputChecker.js';
+import BoxInput from './BoxInput.js';
 
 /**
  * 
@@ -24,14 +25,11 @@ export default function InputDisplay() {
 
       <Text>Display: {display}</Text>
 
-      <TextInput 
-      style={styles.input} 
-      placeholder='Write here btch' 
-      onChangeText={(text) => setInput(text)}
-      value={input}
+      <BoxInput
+        input = {input}
+        setInput = {setInput}
+        errorHandler= {errorHandler}
       />
-
-      <Text>{errorHandler}</Text>
 
       <ButtonsDisplay buttons={[
       { name: "Button 1", toPass: () => InputChecker(input, setInput,setDisplay, setErrorHandler,true, true)},
