@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const InputChecker = ( input, setInput, setDisplay, setErrorHandler, needsNumber, isDecimal) => {
+const InputChecker = ( input, setInput, setAction, setErrorHandler, needsNumber, isDecimal) => {
     
         if(input === ""){
             setErrorHandler("Please input something");
@@ -21,7 +21,7 @@ const InputChecker = ( input, setInput, setDisplay, setErrorHandler, needsNumber
                 setErrorHandler("You need to send a whole number")
             } else {
                 setErrorHandler("")
-                setDisplay(input);
+                setAction(input);
                 setInput("");
             }
     
@@ -31,7 +31,7 @@ const InputChecker = ( input, setInput, setDisplay, setErrorHandler, needsNumber
             
             if (decimalPattern.test(input)) {
                 setErrorHandler("");
-                setDisplay(input);
+                setAction(input);
                 setInput("");
             } else {
                 setErrorHandler("Please enter a valid decimal number.");
@@ -39,7 +39,7 @@ const InputChecker = ( input, setInput, setDisplay, setErrorHandler, needsNumber
     
         } else {
             setErrorHandler("")
-            setDisplay(input);
+            setAction(input);
             setInput("");
     
         }

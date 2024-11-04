@@ -13,7 +13,7 @@ function CustomButton(props) {
   )
 }
 
-export default function ButtonGrid({ buttons }) {
+export default function ButtonsDisplay({ buttons }) {
   return (
     <View style={styles.buttonContainer}>
       

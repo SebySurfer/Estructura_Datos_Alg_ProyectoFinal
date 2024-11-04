@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Button, TextInput, SafeAreaView } from 'react-native'
 import React, {useState} from 'react'
 
-import ButtonGrid from './MyButton.js';
+import ButtonsDisplay from './ButtonsDisplay.js';
 import InputChecker from './InputChecker.js';
 
 /**
@@ -13,12 +13,10 @@ import InputChecker from './InputChecker.js';
 
 
 
-export default function StateHook() {
+export default function InputDisplay() {
     const [input, setInput] = useState("");
     const [display, setDisplay] = useState("")
     const [errorHandler, setErrorHandler] = useState("");
-
-
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -35,7 +33,7 @@ export default function StateHook() {
 
       <Text>{errorHandler}</Text>
 
-      <ButtonGrid buttons={[
+      <ButtonsDisplay buttons={[
       { name: "Button 1", toPass: () => InputChecker(input, setInput,setDisplay, setErrorHandler,true, true)},
       { name: "Button 2", toPass: () => InputChecker(input, setInput,setDisplay, setErrorHandler,true, false)},
       { name: "Button 3", toPass: () => InputChecker(input, setInput,setDisplay, setErrorHandler,false, false)},
