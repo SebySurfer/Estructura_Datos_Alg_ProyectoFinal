@@ -18,9 +18,11 @@ export default function StateHook() {
     const [errorHandler, setErrorHandler] = useState("");
 
     const updateDisplay = (needsNumber, isDecimal) => {
+    
+    if(input === ""){
+        setErrorHandler("Please input something");
 
-
-    if(needsNumber === true && isDecimal === false){
+    }  else if(needsNumber === true && isDecimal === false){
         let condition = false;
 
         for (let i = 0; i < input.length; i++){
@@ -30,9 +32,7 @@ export default function StateHook() {
             if(isNaN(toNumber)){ // Checks if its NOT a Number
                 condition = true;
             }
-
         }
-
         if(condition){
             setErrorHandler("You need to send a whole number")
         } else {
@@ -44,15 +44,14 @@ export default function StateHook() {
     } else if (needsNumber === true && isDecimal === true){
         
         const decimalPattern = /^\d*\.?\d*$/;
-                if (decimalPattern.test(input)) {
-                    setErrorHandler("");
-                    setDisplay(input);
-                    setInput("");
-                } else {
-                    setErrorHandler("Please enter a valid decimal number.");
-                }
-
         
+        if (decimalPattern.test(input)) {
+            setErrorHandler("");
+            setDisplay(input);
+            setInput("");
+        } else {
+            setErrorHandler("Please enter a valid decimal number.");
+        }
 
     } else {
         setErrorHandler("")
