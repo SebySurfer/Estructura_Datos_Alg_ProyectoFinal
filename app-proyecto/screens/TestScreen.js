@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View, Button, TextInput, SafeAreaView } from 'react-native'
 import React, {useState} from 'react'
 
-import ButtonsDisplay from './ButtonsDisplay.js';
-import InputChecker from './InputChecker.js';
-import BoxInput from './BoxInput.js';
+import ButtonsDisplay from '../components/ButtonsDisplay.js';
+import InputChecker from '../components/InputChecker.js';
+import BoxInput from '../components/BoxInput.js';
 
 /**
  * 
@@ -14,7 +14,7 @@ import BoxInput from './BoxInput.js';
 
 
 
-export default function InputDisplay() {
+export default function TestScreen() {
     const [input, setInput] = useState("");
     const [display, setDisplay] = useState("")
     const [errorHandler, setErrorHandler] = useState("");
