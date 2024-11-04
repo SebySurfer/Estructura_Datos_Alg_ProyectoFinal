@@ -17,9 +17,10 @@ export default function StateHook() {
     const [display, setDisplay] = useState("")
     const [errorHandler, setErrorHandler] = useState("");
 
-    const updateDisplay = (needsNumber) => {
+    const updateDisplay = (needsNumber, isDecimal) => {
 
-    if(needsNumber === true){
+
+    if(needsNumber === true && isDecimal === false){
         let condition = false;
 
         for (let i = 0; i < input.length; i++){
@@ -33,12 +34,25 @@ export default function StateHook() {
         }
 
         if(condition){
-            setErrorHandler("You need to send a number")
+            setErrorHandler("You need to send a whole number")
         } else {
             setErrorHandler("")
             setDisplay(input);
             setInput("");
         }
+
+    } else if (needsNumber === true && isDecimal === true){
+        
+        const decimalPattern = /^\d*\.?\d*$/;
+                if (decimalPattern.test(input)) {
+                    setErrorHandler("");
+                    setDisplay(input);
+                    setInput("");
+                } else {
+                    setErrorHandler("Please enter a valid decimal number.");
+                }
+
+        
 
     } else {
         setErrorHandler("")
@@ -48,6 +62,8 @@ export default function StateHook() {
     }
 
     }
+
+
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -65,10 +81,10 @@ export default function StateHook() {
       <Text>{errorHandler}</Text>
 
       <ButtonGrid buttons={[
-      { name: "Button 1", toPass: () => updateDisplay(true)},
-      { name: "Button 2", toPass: () => updateDisplay(true)},
-      { name: "Button 3", toPass: () => updateDisplay(false)},
-      { name: "Button 4", toPass: () => updateDisplay(false)},
+      { name: "Button 1", toPass: () => updateDisplay(true, true)},
+      { name: "Button 2", toPass: () => updateDisplay(true, false)},
+      { name: "Button 3", toPass: () => updateDisplay(false, false)},
+      { name: "Button 4", toPass: () => updateDisplay(false, false)},
       // Add more buttons as needed
     ]} />
 
