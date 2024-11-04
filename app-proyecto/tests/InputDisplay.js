@@ -16,6 +16,7 @@ import BoxInput from '../components/BoxInput.js';
 
 export default function InputDisplay() {
     const [input, setInput] = useState("");
+    //Similar to display, you need to assign all the buttons to their current and unique "display" useState
     const [display, setDisplay] = useState("")
     const [errorHandler, setErrorHandler] = useState("");
 
