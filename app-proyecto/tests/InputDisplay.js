@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Button, TextInput, SafeAreaView } from 'react-n
 import React, {useState} from 'react'
 
 import ButtonsDisplay from '../components/ButtonsDisplay.js';
-import InputChecker from '../components/InputChecker.js';
+import {NumberInputChecker, StringInputChecker} from '../components/InputChecker.js';
 import BoxInput from '../components/BoxInput.js';
 
 /**
@@ -33,10 +33,10 @@ export default function InputDisplay() {
       />
 
       <ButtonsDisplay buttons={[
-      { name: "Button 1", toPass: () => InputChecker(input, setInput,setDisplay, setErrorHandler,true, true)},
-      { name: "Button 2", toPass: () => InputChecker(input, setInput,setDisplay, setErrorHandler,true, false)},
-      { name: "Button 3", toPass: () => InputChecker(input, setInput,setDisplay, setErrorHandler,false, false)},
-      { name: "Button 4", toPass: () => InputChecker(input, setInput,setDisplay, setErrorHandler,false, false)},
+      { name: "Button 1", toPass: () => NumberInputChecker(input, setInput,setDisplay, setErrorHandler,true)},
+      { name: "Button 2", toPass: () => NumberInputChecker(input, setInput,setDisplay, setErrorHandler,false)},
+      { name: "Button 3", toPass: () => StringInputChecker(input, setInput,setDisplay, setErrorHandler)},
+      { name: "Button 4", toPass: () => StringInputChecker(input, setInput,setDisplay, setErrorHandler)},
       // Add more buttons as needed
     ]} />
 
