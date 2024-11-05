@@ -4,6 +4,7 @@ import React, {useState} from 'react'
 import ButtonsDisplay from '../components/ButtonsDisplay.js';
 import {NumberInputChecker, StringInputChecker} from '../components/InputChecker.js';
 import BoxInput from '../components/BoxInput.js';
+import InputDisplayStyles from '../styles/InputDisplayStyles.js';
 
 /**
  * 
@@ -21,8 +22,8 @@ export default function InputDisplay() {
     const [errorHandler, setErrorHandler] = useState("");
 
   return (
-    <SafeAreaView style={styles.safeArea}>
-    <View style={styles.container}>
+    <SafeAreaView style={InputDisplayStyles.safeArea}>
+    <View style={InputDisplayStyles.container}>
 
       <Text>Display: {display}</Text>
 
@@ -46,25 +47,5 @@ export default function InputDisplay() {
   )
 }
 
-const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    justifyContent: 'center', // Centers vertically
-    alignItems: 'center', // Centers horizontally
-  },
-  container: {
-    alignItems: 'center', // Centers the contents within this View
-  },
-  text: {
-    marginBottom: 10, // Adds space between the text and button
-    fontSize: 18, // Adjusts font size for better readability
-  },
-  input:{
-    borderWidth: 1, 
-    borderColor: 'black', 
-    padding: 8, 
-    margin: 10, 
-    width: 200
-  }
-});
+
 

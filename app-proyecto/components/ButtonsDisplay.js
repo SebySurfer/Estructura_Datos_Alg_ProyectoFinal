@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, Button, TextInput } from 'react-native'
 import React from 'react'
+import InputDisplayStyles from '../styles/InputDisplayStyles';
 
 function CustomButton(props) {
   return (
@@ -15,10 +16,10 @@ function CustomButton(props) {
 
 export default function ButtonsDisplay({ buttons }) {
   return (
-    <View style={styles.buttonContainer}>
+    <View style={InputDisplayStyles.buttonContainer}>
       
       {buttons.map((button, index) => (
-        <View key={index} style={styles.buttonWrapper}>
+        <View key={index} style={InputDisplayStyles.buttonWrapper}>
           <CustomButton name={button.name} toPass={button.toPass} />
         </View>
       ))}
@@ -27,17 +28,5 @@ export default function ButtonsDisplay({ buttons }) {
 }
 
 const styles = StyleSheet.create({
-  buttonContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-    padding: 16,
-  },
-  buttonWrapper: {
-    width: '48%', // Adjusts two buttons per row
-    marginBottom: 10,
-  },
-  button: {
-    paddingVertical: 10,
-  },
+  
 });

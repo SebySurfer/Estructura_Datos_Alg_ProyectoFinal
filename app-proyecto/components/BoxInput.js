@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, TextInput } from 'react-native'
 import React from 'react'
+import InputDisplayStyles from '../styles/InputDisplayStyles';
 
 /*
 
@@ -15,7 +16,7 @@ const BoxInput = (props) => {
     <View>
 
     <TextInput 
-      style={styles.input} 
+      style={InputDisplayStyles.input} 
       placeholder='Escriba aqui' 
       onChangeText={(text) => props.setInput(text)}
       value={props.input}
@@ -32,12 +33,6 @@ const BoxInput = (props) => {
 export default BoxInput;
 
 const styles = StyleSheet.create({
-    input:{
-    borderWidth: 1, 
-    borderColor: 'black', 
-    padding: 8, 
-    margin: 10, 
-    width: 200
-  }
+   
 })
 
