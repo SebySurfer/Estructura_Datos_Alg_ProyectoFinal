@@ -4,14 +4,7 @@ import React, {useState} from 'react'
 import ButtonsDisplay from '../components/ButtonsDisplay.js';
 import {NumberInputChecker, StringInputChecker} from '../components/InputChecker.js';
 import BoxInput from '../components/BoxInput.js';
-import InputDisplayStyles from '../styles/InputDisplayStyles.js';
-
-/**
- * 
- * Your going to create only 2 types of functions:
- *  1. One that preforms the checks and validation of input data 
- *  2. The action of each unique button 
- */
+import ViewWrapper from '../components/ViewWrapper.js';
 
 
 
@@ -22,8 +15,7 @@ export default function InputDisplay() {
     const [errorHandler, setErrorHandler] = useState("");
 
   return (
-    <SafeAreaView style={InputDisplayStyles.safeArea}>
-    <View style={InputDisplayStyles.container}>
+    <ViewWrapper>
 
       <Text>Display: {display}</Text>
 
@@ -41,8 +33,7 @@ export default function InputDisplay() {
       // Add more buttons as needed
     ]} />
 
-    </View>
-    </SafeAreaView>
+  </ViewWrapper>
 
   )
 }
