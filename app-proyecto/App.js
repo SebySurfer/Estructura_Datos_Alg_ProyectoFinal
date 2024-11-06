@@ -3,11 +3,12 @@ import StackNavigator from './navigations/StackNavigator.js';
 import InputDisplay from './schemas/InputDisplay.js';
 
 /*
+    
     <StackNavigator/>
 */
 
 export default function App() {
   return (
-    <InputDisplay/>
+    <StackNavigator/>
   )
 }

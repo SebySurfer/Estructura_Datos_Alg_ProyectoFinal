@@ -5,7 +5,7 @@ import InputDisplayStyles from '../styles/InputDisplayStyles';
 function CustomButton(props) {
   return (
     <Button
-    style={styles.button}
+    style={InputDisplayStyles.button}
 
     title={props.name}
     onPress={props.toPass}
@@ -27,6 +27,3 @@ export default function ButtonsDisplay({ buttons }) {
   );
 }
 
-const styles = StyleSheet.create({
-  
-});

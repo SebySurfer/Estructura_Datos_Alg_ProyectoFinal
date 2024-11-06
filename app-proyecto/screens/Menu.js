@@ -14,12 +14,21 @@ import OrdenamientoQuicksort from './Criterio_02/OrdenamientoQuicksort'
 import Arboles from './Criterio_03/Arboles'
 import Grafos from './Criterio_03/Grafos'
 
+import ButtonsDisplay from '../components/ButtonsDisplay'
 
-export default function Menu() {
+
+export default function Menu({navigation}) {
   return (
     <View>
-      
-      
+      <ButtonsDisplay buttons={[
+      { name: "Arreglos", toPass: () => navigation.navigate("Arreglos")},
+      { name: "Colas", toPass: () => navigation.navigate("Colas")},
+      { name: "Pilas", toPass: () => navigation.navigate("Pilas")},
+      { name: "Busqueda Binaria", toPass: () => navigation.navigate("Busqueda Binaria")},
+      { name: "Ordenamiento QuickSort", toPass: () => navigation.navigate("Ordenamiento QuickSort")},
+      { name: "Arboles", toPass: () => navigation.navigate("Arboles")},
+      { name: "Grafos", toPass: () => navigation.navigate("Grafos")},
+      ]} />
     </View>
   )
 }
