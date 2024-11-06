@@ -26,10 +26,10 @@ export default function InputDisplay() {
       />
 
       <ButtonsDisplay buttons={[
-      { name: "Button 1", toPass: () => NumberInputChecker(input, setInput,setDisplay, setErrorHandler,true)},
-      { name: "Button 2", toPass: () => NumberInputChecker(input, setInput,setDisplay, setErrorHandler,false)},
-      { name: "Button 3", toPass: () => StringInputChecker(input, setInput,setDisplay, setErrorHandler)},
-      { name: "Button 4", toPass: () => StringInputChecker(input, setInput,setDisplay, setErrorHandler)},
+      { name: "Boton num decimal", toPass: () => NumberInputChecker(input, setInput,setDisplay, setErrorHandler,true)},
+      { name: "Boton num entero", toPass: () => NumberInputChecker(input, setInput,setDisplay, setErrorHandler,false)},
+      { name: "Boton String", toPass: () => StringInputChecker(input, setInput,setDisplay, setErrorHandler)},
+      { name: "Boton String", toPass: () => StringInputChecker(input, setInput,setDisplay, setErrorHandler)},
       // Add more buttons as needed
     ]} />
 
