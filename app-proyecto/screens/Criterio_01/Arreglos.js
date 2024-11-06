@@ -10,3 +10,5 @@ export default function Arreglos() {
 }
 
 const styles = StyleSheet.create({})
+
+
