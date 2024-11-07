@@ -63,8 +63,6 @@ const getMig = () =>{
 }
 
 const buckets = require('buckets-js');
-
-// Create a new queue
 const ColaDeAviones  = new buckets.Queue();
 
 ColaDeAviones.add("F-14")
