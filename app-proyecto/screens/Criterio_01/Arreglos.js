@@ -37,7 +37,7 @@ const Declinar = (index) => {
   }
 }
 
-const Aceptar = () => {
+const Aceptar = (index) => {
   const estudiante =  ListaDeInscripciones.find(pos => pos.codigo === index);
   if(estudiante){
     estudiante.estadoDeIns = "Aceptado"
