@@ -10,3 +10,4 @@ export default function Pilas() {
 }
 
 const styles = StyleSheet.create({})
+
