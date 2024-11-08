@@ -126,29 +126,90 @@ class BinaryTree {
   }
 
 
+  // Estos son los funciones que intergran ambos arboles,
+  // donde uno sirve para agregar y borrar elementos (basandose en un tutorial de youtube), 
+  // y otro para dar los tipos de ordenes sin que crear mas codigo (usado dentro de la libreria de buckets )
 
 
-const tree = new BinaryTree()
+  const agregarElemento = (elemento) => {
+    if(!arbolParaOrden.contains(elemento)){
+      arbolParaOrden.add(elemento);
+      tree.insert(elemento);
+    } else {
+      console.log("Ya existe")
+    }
+  }
 
-tree.insert(11);
-tree.insert(7);
-tree.insert(15);
-tree.insert(13);
-tree.insert(19);
-tree.insert(12);
-tree.insert(14);
+  const borrarElemento = (elemento) => {
+    if(arbolParaOrden.contains(elemento)){
+      arbolParaOrden.remove(elemento);
+      tree.delete(elemento);
+  } else {
+    console.log("No existe")
+  }
+}
+
+const buscarElemento = (elemento) => {
+  if(arbolParaOrden.contains(elemento)){
+    console.log("Si existe");
+  } else {
+    console.log("No existe");
+  }
+
+}
 
 
-console.log(tree.isEmpty())
+const Inorden = () => {
+    arbolParaOrden.inorderTraversal((element) => {
+        console.log(element);
+    });
+};
 
-console.log(tree.search(tree.root, 10))
-console.log(tree.search(tree.root, 15))
+const PostOrden = () => {
+    arbolParaOrden.postorderTraversal((element) => {
+        console.log(element);
+    });
+};
 
-tree.printTree()
+const Preorden = () => {
+    arbolParaOrden.preorderTraversal((element) => {
+        console.log(element);
+    });
+};
 
-tree.delete(15)
 
-tree.printTree()
+const buckets = require('buckets-js');
+const arbolParaOrden = new buckets.BSTree(); // Arbol de la libreria para orden
+const tree = new BinaryTree() // Arbol de codigo para acciones
+
+agregarElemento(11);
+agregarElemento(7);
+agregarElemento(15);
+agregarElemento(13);
+agregarElemento(19);
+agregarElemento(11);
+agregarElemento(12);
+agregarElemento(11);
+
+tree.printTree();
+
+buscarElemento(15);
+borrarElemento(15)
+buscarElemento(15);
+
+tree.printTree();
+
+
+Inorden();
+Preorden();
+PostOrden();
+
+
+
+
+
+
+
 
 
 
