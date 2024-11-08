@@ -99,12 +99,11 @@ class BinaryTree {
       return root
     }
       
-    min(root){
-      if(!root.value){
-        return root.value
-      } else {
-        return this.min(root.left)
+    min(root) {
+      while (root.left !== null) {
+        root = root.left;
       }
+      return root.value;
     }
 
     printTree(node = this.root, prefix = "", isLeft = true) {
@@ -143,11 +142,11 @@ tree.insert(14);
 console.log(tree.isEmpty())
 
 console.log(tree.search(tree.root, 10))
-console.log(tree.search(tree.root, 2))
+console.log(tree.search(tree.root, 15))
 
 tree.printTree()
 
-tree.delete(6)
+tree.delete(15)
 
 tree.printTree()
 
