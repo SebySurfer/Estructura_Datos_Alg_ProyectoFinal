@@ -182,6 +182,9 @@ const buckets = require('buckets-js');
 const arbolParaOrden = new buckets.BSTree(); // Arbol de la libreria para orden
 const tree = new BinaryTree() // Arbol de codigo para acciones
 
+/*
+Tests:
+
 agregarElemento(11);
 agregarElemento(7);
 agregarElemento(15);
@@ -203,6 +206,11 @@ tree.printTree();
 Inorden();
 Preorden();
 PostOrden();
+
+
+
+*/
+
 
 
 
