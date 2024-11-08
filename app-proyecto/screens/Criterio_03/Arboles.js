@@ -147,6 +147,10 @@ console.log(tree.search(tree.root, 2))
 
 tree.printTree()
 
+tree.delete(6)
+
+tree.printTree()
+
 
 
 
