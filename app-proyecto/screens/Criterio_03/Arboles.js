@@ -106,6 +106,24 @@ class BinaryTree {
         return this.min(root.left)
       }
     }
+
+    printTree(node = this.root, prefix = "", isLeft = true) {
+      if (node === null) {
+        return;
+      }
+  
+      if (node.right !== null) {
+        this.printTree(node.right, prefix + (isLeft ? "│   " : "    "), false);
+      }
+  
+      console.log(prefix + (isLeft ? "└── " : "┌── ") + node.value);
+  
+      if (node.left !== null) {
+        this.printTree(node.left, prefix + (isLeft ? "    " : "│   "), true);
+      }
+    }
+
+    
   }
 
 
@@ -113,13 +131,21 @@ class BinaryTree {
 
 const tree = new BinaryTree()
 
-tree.insert(10);
-tree.insert(5)
+tree.insert(11);
+tree.insert(7);
+tree.insert(15);
+tree.insert(13);
+tree.insert(19);
+tree.insert(12);
+tree.insert(14);
+
 
 console.log(tree.isEmpty())
 
 console.log(tree.search(tree.root, 10))
 console.log(tree.search(tree.root, 2))
+
+tree.printTree()
 
 
 
