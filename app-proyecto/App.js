@@ -10,6 +10,6 @@ import GraphView from './components/GraphView.jsx';
 
 export default function App() {
   return (
-    <GraphView/>
+    <InputDisplay/>
   )
 }
