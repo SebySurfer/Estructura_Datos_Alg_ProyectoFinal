@@ -4,6 +4,7 @@ import InputDisplay from './schemas/InputDisplay.js';
 import GraphView from './components/GraphView.jsx';
 import Arreglos from './screens/Criterio_01/Arreglos.js';
 import Colas from './screens/Criterio_01/Colas.js';
+import Pilas from './screens/Criterio_01/Pilas.js';
 
 /*
     
@@ -12,6 +13,6 @@ import Colas from './screens/Criterio_01/Colas.js';
 
 export default function App() {
   return (
-    <Colas/>
+    <Pilas/>
   )
 }
