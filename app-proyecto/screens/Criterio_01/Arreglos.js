@@ -2,8 +2,8 @@ import { StyleSheet, Text, View, FlatList, Button, SafeAreaView, TextInput } fro
 import React, { useState } from 'react';
 
 export default function Arreglos() {
-  const [input, setInput] = useState(""); // Input for the codigo
-  const [errorHandler, setErrorHandler] = useState(""); // Error messages
+  const [input, setInput] = useState(""); 
+  const [errorHandler, setErrorHandler] = useState(""); 
   const [listaDeInscripciones, setListaDeInscripciones] = useState([
     { codigo: 1, nombre: "Santiago Sanchez", gpa: 90, escuela: "Anahuac", estadoDeIns: "" },
     { codigo: 2, nombre: "Alexander Caldarino", gpa: 70, escuela: "Tech de Monterrey", estadoDeIns: "" },
@@ -19,7 +19,6 @@ export default function Arreglos() {
   const updateEstado = (codigo, estado) => {
     const studentCode = parseInt(codigo, 10);
 
-    // Check if input is valid and matches a student
     const student = listaDeInscripciones.find((item) => item.codigo === studentCode);
 
     if (!student) {
@@ -30,8 +29,8 @@ export default function Arreglos() {
           item.codigo === studentCode ? { ...item, estadoDeIns: estado } : item
         )
       );
-      setErrorHandler(""); // Clear any previous errors
-      setInput(""); // Clear input after updating
+      setErrorHandler(""); 
+      setInput(""); 
     }
   };
 
@@ -40,7 +39,6 @@ export default function Arreglos() {
       <View style={styles.container}>
         <Text style={styles.title}>Lista de Inscripciones</Text>
 
-        {/* Input for código */}
         <TextInput
           style={styles.input}
           value={input}
@@ -49,16 +47,13 @@ export default function Arreglos() {
           placeholder="Ingrese el codigo del estudiante"
         />
 
-        {/* Error Message */}
         {errorHandler ? <Text style={styles.error}>{errorHandler}</Text> : null}
 
-        {/* Action Buttons */}
         <View style={styles.buttonsContainer}>
           <Button title="Aceptar" onPress={() => updateEstado(input, "Aceptado")} color="green" />
           <Button title="Declinar" onPress={() => updateEstado(input, "Declinado")} color="red" />
         </View>
 
-        {/* Display the list */}
         <FlatList
           data={listaDeInscripciones}
           keyExtractor={(item) => item.codigo.toString()}

@@ -69,7 +69,7 @@ export default function BusquedaBinaria() {
         inferior = medio + 1;
       }
     }
-    return null; // Year not found
+    return null; 
   };
 
   const handleSearch = () => {
@@ -90,15 +90,14 @@ export default function BusquedaBinaria() {
       setErrorHandler(`El año ${year} no fue encontrado en los registros.`);
       setResult("");
     }
-    setInputYear(""); // Clear the input field after search
+    setInputYear(""); 
   };
 
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
-        <Text style={styles.title}>Busqueda Ganadores 1981 - 2023</Text>
+        <Text style={styles.title}>Ganadores 1981 - 2023</Text>
 
-        {/* Input for Year */}
         <TextInput
           style={styles.input}
           placeholder="Ingrese un año"
@@ -107,13 +106,10 @@ export default function BusquedaBinaria() {
           keyboardType="numeric"
         />
 
-        {/* Error Message */}
         {errorHandler ? <Text style={styles.error}>{errorHandler}</Text> : null}
 
-        {/* Search Button */}
         <Button title="Buscar" onPress={handleSearch} />
 
-        {/* Search Result */}
         {result ? <Text style={styles.result}>{result}</Text> : null}
       </View>
     </SafeAreaView>

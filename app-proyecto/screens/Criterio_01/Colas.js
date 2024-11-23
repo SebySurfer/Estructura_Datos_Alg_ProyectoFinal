@@ -13,19 +13,16 @@ export default function Colas() {
   const [colaDeAviones, setColaDeAviones] = useState([]);
 
   const updateAvionCount = (index, avionName) => {
-    // Update the airplane count
     setListaDeAviones((prevList) =>
       prevList.map((avion, i) =>
         i === index && avion[1] > 0 ? [avion[0], avion[1] - 1] : avion
       )
     );
 
-    // Add to the queue
     setColaDeAviones((prevQueue) => [...prevQueue, avionName]);
   };
 
   const despegarAvion = () => {
-    // Remove the first airplane from the queue
     setColaDeAviones((prevQueue) => prevQueue.slice(1));
   };
 
@@ -34,7 +31,6 @@ export default function Colas() {
       <View style={styles.container}>
         <Text style={styles.title}>Lista de Aviones</Text>
 
-        {/* Display the list of airplanes */}
         <FlatList
           data={listaDeAviones}
           keyExtractor={(item, index) => index.toString()}
@@ -52,7 +48,6 @@ export default function Colas() {
           )}
         />
 
-        {/* Display the queue */}
         <Text style={styles.title}>Cola de Aviones</Text>
         {colaDeAviones.length > 0 ? (
           colaDeAviones.map((avion, index) => (
@@ -64,7 +59,6 @@ export default function Colas() {
           <Text style={styles.emptyQueue}>La cola está vacía</Text>
         )}
 
-        {/* Dequeue button */}
         <Button
           title="Despegar Avion"
           onPress={despegarAvion}

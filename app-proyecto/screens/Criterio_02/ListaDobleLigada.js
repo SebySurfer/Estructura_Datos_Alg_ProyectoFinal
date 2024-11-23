@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View, TextInput, Button, FlatList, SafeAreaView } from "react-native";
 
 export default function ListaDobleLigada() {
-  const [listaDeArmas, setListaDeArmas] = useState([]); // Array to manage the list
-  const [arma, setArma] = useState(""); // Input for adding a weapon
-  const [armaToDelete, setArmaToDelete] = useState(""); // Input for deleting by string value
+  const [listaDeArmas, setListaDeArmas] = useState([]); 
+  const [arma, setArma] = useState(""); 
+  const [armaToDelete, setArmaToDelete] = useState(""); 
   const [error, setError] = useState("");
 
   const agregarArma = () => {
@@ -18,10 +18,9 @@ export default function ListaDobleLigada() {
       return;
     }
 
-    // Add the weapon to the list
     setListaDeArmas((prevList) => [...prevList, arma]);
-    setArma(""); // Clear input field
-    setError(""); // Clear errors
+    setArma(""); 
+    setError(""); 
   };
 
   const borrarArma = () => {
@@ -35,18 +34,16 @@ export default function ListaDobleLigada() {
       return;
     }
 
-    // Remove the weapon by its name
     setListaDeArmas((prevList) => prevList.filter((item) => item !== armaToDelete));
-    setArmaToDelete(""); // Clear input field
-    setError(""); // Clear errors
+    setArmaToDelete(""); 
+    setError(""); 
   };
 
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
-        <Text style={styles.title}>Lista Doble Ligada</Text>
+        <Text style={styles.title}>Armamento</Text>
 
-        {/* Add Weapon Input */}
         <TextInput
           style={styles.input}
           placeholder="Nombre del arma"
@@ -55,7 +52,6 @@ export default function ListaDobleLigada() {
         />
         <Button title="Agregar Arma" onPress={agregarArma} />
 
-        {/* Delete Weapon by String Value Input */}
         <TextInput
           style={styles.input}
           placeholder="Nombre del arma para borrar"
@@ -64,10 +60,8 @@ export default function ListaDobleLigada() {
         />
         <Button title="Borrar Arma" onPress={borrarArma} />
 
-        {/* Error Message */}
         {error ? <Text style={styles.error}>{error}</Text> : null}
 
-        {/* Display the List */}
         <Text style={styles.subtitle}>Lista de Armas:</Text>
         {listaDeArmas.length === 0 ? (
           <Text style={styles.emptyList}>La lista está vacía.</Text>

@@ -25,6 +25,7 @@ export default function Menu({navigation}) {
       { name: "Colas", toPass: () => navigation.navigate("Colas")},
       { name: "Pilas", toPass: () => navigation.navigate("Pilas")},
       { name: "Busqueda Binaria", toPass: () => navigation.navigate("Busqueda Binaria")},
+      { name: "Lista Doble Ligada", toPass: () => navigation.navigate("Lista Doble Ligada")},
       { name: "Ordenamiento QuickSort", toPass: () => navigation.navigate("Ordenamiento QuickSort")},
       { name: "Arboles", toPass: () => navigation.navigate("Arboles")},
       { name: "Grafos", toPass: () => navigation.navigate("Grafos")},
