@@ -126,7 +126,7 @@ export default function Arboles() {
         }
       },
       setError,
-      false // Only allow whole numbers
+      false 
     );
   };
 
