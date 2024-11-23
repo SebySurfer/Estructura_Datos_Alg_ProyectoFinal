@@ -2,39 +2,42 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View, TextInput, Button, FlatList, SafeAreaView } from "react-native";
 
 export default function ListaDobleLigada() {
-  const [listaDeArmas, setListaDeArmas] = useState([]); // Using an array to track the list
+  const [listaDeArmas, setListaDeArmas] = useState([]); // Array to manage the list
   const [arma, setArma] = useState(""); // Input for adding a weapon
-  const [indexToDelete, setIndexToDelete] = useState(""); // Input for deleting by index
+  const [armaToDelete, setArmaToDelete] = useState(""); // Input for deleting by string value
   const [error, setError] = useState("");
 
   const agregarArma = () => {
     if (arma.trim() === "") {
-      setError("El nombre del arma no puede estar vacío.");
+      setError("El nombre del arma no puede estar vacio.");
       return;
     }
 
-    // Add the weapon to the array and update state
+    if (listaDeArmas.includes(arma)) {
+      setError(`El arma "${arma}" ya existe en la lista.`);
+      return;
+    }
+
+    // Add the weapon to the list
     setListaDeArmas((prevList) => [...prevList, arma]);
     setArma(""); // Clear input field
     setError(""); // Clear errors
   };
 
   const borrarArma = () => {
-    const index = parseInt(indexToDelete, 10);
-
-    if (isNaN(index)) {
-      setError("Por favor, ingrese un índice válido.");
+    if (armaToDelete.trim() === "") {
+      setError("Por favor, ingrese el nombre del arma a borrar.");
       return;
     }
 
-    if (index < 0 || index >= listaDeArmas.length) {
-      setError("Índice fuera de rango.");
+    if (!listaDeArmas.includes(armaToDelete)) {
+      setError(`El arma "${armaToDelete}" no se encuentra en la lista.`);
       return;
     }
 
-    // Remove the weapon by index and update state
-    setListaDeArmas((prevList) => prevList.filter((_, i) => i !== index));
-    setIndexToDelete(""); // Clear input field
+    // Remove the weapon by its name
+    setListaDeArmas((prevList) => prevList.filter((item) => item !== armaToDelete));
+    setArmaToDelete(""); // Clear input field
     setError(""); // Clear errors
   };
 
@@ -52,13 +55,12 @@ export default function ListaDobleLigada() {
         />
         <Button title="Agregar Arma" onPress={agregarArma} />
 
-        {/* Delete Weapon by Index Input */}
+        {/* Delete Weapon by String Value Input */}
         <TextInput
           style={styles.input}
-          placeholder="Índice para borrar"
-          value={indexToDelete}
-          onChangeText={setIndexToDelete}
-          keyboardType="numeric"
+          placeholder="Nombre del arma para borrar"
+          value={armaToDelete}
+          onChangeText={setArmaToDelete}
         />
         <Button title="Borrar Arma" onPress={borrarArma} />
 
@@ -75,7 +77,7 @@ export default function ListaDobleLigada() {
             keyExtractor={(item, index) => index.toString()}
             renderItem={({ item, index }) => (
               <Text style={styles.listItem}>
-                {index}. {item}
+                {index + 1}. {item}
               </Text>
             )}
           />
