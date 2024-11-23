@@ -8,7 +8,7 @@ import Pilas from './screens/Criterio_01/Pilas.js';
 import BusquedaBinaria from './screens/Criterio_02/BusquedaBinaria.js';
 
 import OrdenamientoQuicksort from './screens/Criterio_02/OrdenamientoQuicksort.js';
-
+import Arboles from './screens/Criterio_03/Arboles.js';
 /*
     
     <StackNavigator/>
@@ -16,6 +16,6 @@ import OrdenamientoQuicksort from './screens/Criterio_02/OrdenamientoQuicksort.j
 
 export default function App() {
   return (
-    <OrdenamientoQuicksort/>
+    <Arboles/>
   )
 }

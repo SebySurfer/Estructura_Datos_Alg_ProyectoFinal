@@ -5,7 +5,7 @@ import React from 'react'
 const NumberInputChecker = ( input, setInput, setAction, setErrorHandler, isDecimal) => {
 
     if(input === ""){
-        setErrorHandler("Please input something");
+        setErrorHandler("Por favor hacer un input");
 
     }  else if(isDecimal === false){
         let condition = false;
@@ -19,7 +19,7 @@ const NumberInputChecker = ( input, setInput, setAction, setErrorHandler, isDeci
             }
         }
         if(condition){
-            setErrorHandler("You need to send a whole number")
+            setErrorHandler("Necesitas un numero entero")
         } else {
             setErrorHandler("")
             setAction(input);
@@ -35,7 +35,7 @@ const NumberInputChecker = ( input, setInput, setAction, setErrorHandler, isDeci
             setAction(input);
             setInput("");
         } else {
-            setErrorHandler("Please enter a valid decimal number.");
+            setErrorHandler("Dame un numero decimal por favor");
         }
     }
 }
@@ -43,7 +43,7 @@ const NumberInputChecker = ( input, setInput, setAction, setErrorHandler, isDeci
 
 const StringInputChecker = ( input, setInput, setAction, setErrorHandler) => {
     if(input === ""){
-        setErrorHandler("Please input something");
+        setErrorHandler("Por favor hacer un input");
     } else {
         setErrorHandler("")
         setAction(input);
