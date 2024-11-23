@@ -105,7 +105,6 @@ class BinaryTree {
     return result;
   }
 }
-
 export default function Arboles() {
   const [tree] = useState(new BinaryTree());
   const [element, setElement] = useState("");
@@ -119,7 +118,7 @@ export default function Arboles() {
       setElement,
       () => {
         if (tree.search(tree.root, Number(element))) {
-          setError(`El elemento ${element} ya existe en el arbol.`);
+          setError(`El elemento ${element} ya existe en el árbol.`);
         } else {
           tree.insert(Number(element));
           setTreeOutput(tree.printTree());
@@ -137,7 +136,7 @@ export default function Arboles() {
       return;
     }
     if (!tree.search(tree.root, Number(element))) {
-      setError(`El elemento ${element} no se encuentra en el arbol.`);
+      setError(`El elemento ${element} no se encuentra en el árbol.`);
     } else {
       tree.delete(Number(element));
       setTreeOutput(tree.printTree());
@@ -152,60 +151,119 @@ export default function Arboles() {
       return;
     }
     const found = tree.search(tree.root, Number(element));
-    setOutput([`El elemento ${element} ${found ? "sí" : "no"} existe en el arbol.`]);
+    setOutput([`El elemento ${element} ${found ? "sí" : "no"} existe en el árbol.`]);
     setElement("");
+  };
+
+  const preorderTraversal = (node, result = []) => {
+    if (node) {
+      result.push(node.value);
+      preorderTraversal(node.left, result);
+      preorderTraversal(node.right, result);
+    }
+    return result;
+  };
+
+  const inorderTraversal = (node, result = []) => {
+    if (node) {
+      inorderTraversal(node.left, result);
+      result.push(node.value);
+      inorderTraversal(node.right, result);
+    }
+    return result;
+  };
+
+  const postorderTraversal = (node, result = []) => {
+    if (node) {
+      postorderTraversal(node.left, result);
+      postorderTraversal(node.right, result);
+      result.push(node.value);
+    }
+    return result;
+  };
+
+  const handleTraversal = (type) => {
+    if (tree.isEmpty()) {
+      Alert.alert("Error", "El árbol está vacío.");
+      return;
+    }
+
+    let result;
+    switch (type) {
+      case "Preorder":
+        result = preorderTraversal(tree.root);
+        break;
+      case "Inorder":
+        result = inorderTraversal(tree.root);
+        break;
+      case "Postorder":
+        result = postorderTraversal(tree.root);
+        break;
+      default:
+        result = [];
+    }
+
+    setOutput([`${type}: ${result.join(", ")}`]);
   };
 
   return (
     <SafeAreaView style={styles.safeArea}>
+      <ScrollView contentContainerStyle={styles.container}>
+        <Text style={styles.title}>Árbol Binario</Text>
 
-    <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Arbol Binario</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Ingrese un número"
+          value={element}
+          onChangeText={setElement}
+          keyboardType="numeric"
+        />
 
-      <TextInput
-        style={styles.input}
-        placeholder="Ingrese un número"
-        value={element}
-        onChangeText={setElement}
-        keyboardType="numeric"
-      />
+        <View style={styles.buttonsContainer}>
+          <Button title="Agregar" onPress={agregarElemento} />
+          <Button title="Borrar" onPress={borrarElemento} />
+          <Button title="Buscar" onPress={buscarElemento} />
+        </View>
 
-      <View style={styles.buttonsContainer}>
-        <Button title="Agregar" onPress={agregarElemento} />
-        <Button title="Borrar" onPress={borrarElemento} />
-        <Button title="Buscar" onPress={buscarElemento} />
-      </View>
+        <View style={styles.traversalButtonsContainer}>
+          <Button title="Preorden" onPress={() => handleTraversal("Preorder")} />
+          <Button title="Inorden" onPress={() => handleTraversal("Inorder")} />
+          <Button title="Postorden" onPress={() => handleTraversal("Postorder")} />
+        </View>
 
-      {error ? <Text style={styles.error}>{error}</Text> : null}
+        {error ? <Text style={styles.error}>{error}</Text> : null}
 
-      <Text style={styles.subtitle}>Árbol:</Text>
-      <View style={styles.treeBox}>
-        {treeOutput.length === 0 ? (
-          <Text style={styles.emptyTree}>El arbol esta vacío.</Text>
-        ) : (
-          treeOutput.map((line, index) => (
-            <Text key={index} style={styles.treeLine}>
+        <Text style={styles.subtitle}>Árbol:</Text>
+        <View style={styles.treeBox}>
+          {treeOutput.length === 0 ? (
+            <Text style={styles.emptyTree}>El árbol está vacío.</Text>
+          ) : (
+            treeOutput.map((line, index) => (
+              <Text key={index} style={styles.treeLine}>
+                {line}
+              </Text>
+            ))
+          )}
+        </View>
+
+        <Text style={styles.subtitle}>Resultados:</Text>
+        <View style={styles.resultsBox}>
+          {output.map((line, index) => (
+            <Text key={index} style={styles.resultLine}>
               {line}
             </Text>
-          ))
-        )}
-      </View>
-
-      <Text style={styles.subtitle}>Resultados:</Text>
-      <View style={styles.resultsBox}>
-        {output.map((line, index) => (
-          <Text key={index} style={styles.resultLine}>
-            {line}
-          </Text>
-        ))}
-      </View>
-    </ScrollView>
+          ))}
+        </View>
+      </ScrollView>
     </SafeAreaView>
-
   );
 }
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: "#f9f9f9",
+  },
   container: {
     padding: 20,
   },
@@ -225,6 +283,11 @@ const styles = StyleSheet.create({
   buttonsContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
+    marginBottom: 20,
+  },
+  traversalButtonsContainer: {
+    flexDirection: "row",
+    justifyContent: "space-evenly",
     marginBottom: 20,
   },
   error: {
