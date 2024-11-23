@@ -7,6 +7,8 @@ import Colas from './screens/Criterio_01/Colas.js';
 import Pilas from './screens/Criterio_01/Pilas.js';
 import BusquedaBinaria from './screens/Criterio_02/BusquedaBinaria.js';
 
+import OrdenamientoQuicksort from './screens/Criterio_02/OrdenamientoQuicksort.js';
+
 /*
     
     <StackNavigator/>
@@ -14,6 +16,6 @@ import BusquedaBinaria from './screens/Criterio_02/BusquedaBinaria.js';
 
 export default function App() {
   return (
-    <BusquedaBinaria/>
+    <OrdenamientoQuicksort/>
   )
 }
