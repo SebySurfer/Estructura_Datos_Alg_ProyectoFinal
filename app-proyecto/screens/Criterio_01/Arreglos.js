@@ -65,7 +65,7 @@ export default function Arreglos() {
           renderItem={({ item }) => (
             <View style={styles.itemContainer}>
               <Text style={styles.itemText}>
-                {item.nombre} - GPA: {item.gpa} - Escuela: {item.escuela} - Estado:{" "}
+                Codigo: {item.codigo} : {item.nombre} - GPA: {item.gpa} - Escuela: {item.escuela} - Estado:{" "}
                 {item.estadoDeIns || "Pendiente"}
               </Text>
             </View>

@@ -16,6 +16,6 @@ import Arboles from './screens/Criterio_03/Arboles.js';
 
 export default function App() {
   return (
-    <ListaDobleLigada/>
+    <StackNavigator/>
   )
 }
