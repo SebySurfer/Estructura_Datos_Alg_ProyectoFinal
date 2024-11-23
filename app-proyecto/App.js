@@ -5,6 +5,7 @@ import GraphView from './components/GraphView.jsx';
 import Arreglos from './screens/Criterio_01/Arreglos.js';
 import Colas from './screens/Criterio_01/Colas.js';
 import Pilas from './screens/Criterio_01/Pilas.js';
+import BusquedaBinaria from './screens/Criterio_02/BusquedaBinaria.js';
 
 /*
     
@@ -13,6 +14,6 @@ import Pilas from './screens/Criterio_01/Pilas.js';
 
 export default function App() {
   return (
-    <Pilas/>
+    <BusquedaBinaria/>
   )
 }
