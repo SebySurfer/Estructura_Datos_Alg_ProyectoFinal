@@ -68,9 +68,7 @@ export default function OrdenamientoQuicksort() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
-        <Text style={styles.title}>Ordenamiento Quicksort</Text>
 
-        {/* Display the List */}
         <Text style={styles.subtitle}>Pilotos (Horas de Vuelo)</Text>
         <FlatList
           data={pilotos}
@@ -82,7 +80,6 @@ export default function OrdenamientoQuicksort() {
           )}
         />
 
-        {/* Sort Button */}
         <Button title="Ordenar Pilotos por Hora" onPress={sortPilots} />
       </View>
     </SafeAreaView>
