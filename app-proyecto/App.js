@@ -3,6 +3,7 @@ import StackNavigator from './navigations/StackNavigator.js';
 import InputDisplay from './schemas/InputDisplay.js';
 import GraphView from './components/GraphView.jsx';
 import Arreglos from './screens/Criterio_01/Arreglos.js';
+import Colas from './screens/Criterio_01/Colas.js';
 
 /*
     
@@ -11,6 +12,6 @@ import Arreglos from './screens/Criterio_01/Arreglos.js';
 
 export default function App() {
   return (
-    <Arreglos/>
+    <Colas/>
   )
 }
