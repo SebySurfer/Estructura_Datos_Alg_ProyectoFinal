@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TextInput, Button, ScrollView, Alert } from "react-native";
+import { StyleSheet, Text, View, TextInput, Button, ScrollView, Alert, SafeAreaView } from "react-native";
 import { NumberInputChecker } from "../../components/InputChecker";
 
 class Node {
@@ -119,7 +119,7 @@ export default function Arboles() {
       setElement,
       () => {
         if (tree.search(tree.root, Number(element))) {
-          setError(`El elemento ${element} ya existe en el árbol.`);
+          setError(`El elemento ${element} ya existe en el arbol.`);
         } else {
           tree.insert(Number(element));
           setTreeOutput(tree.printTree());
@@ -137,7 +137,7 @@ export default function Arboles() {
       return;
     }
     if (!tree.search(tree.root, Number(element))) {
-      setError(`El elemento ${element} no se encuentra en el árbol.`);
+      setError(`El elemento ${element} no se encuentra en el arbol.`);
     } else {
       tree.delete(Number(element));
       setTreeOutput(tree.printTree());
@@ -152,13 +152,15 @@ export default function Arboles() {
       return;
     }
     const found = tree.search(tree.root, Number(element));
-    setOutput([`El elemento ${element} ${found ? "sí" : "no"} existe en el árbol.`]);
+    setOutput([`El elemento ${element} ${found ? "sí" : "no"} existe en el arbol.`]);
     setElement("");
   };
 
   return (
+    <SafeAreaView style={styles.safeArea}>
+
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Árbol Binario</Text>
+      <Text style={styles.title}>Arbol Binario</Text>
 
       <TextInput
         style={styles.input}
@@ -179,7 +181,7 @@ export default function Arboles() {
       <Text style={styles.subtitle}>Árbol:</Text>
       <View style={styles.treeBox}>
         {treeOutput.length === 0 ? (
-          <Text style={styles.emptyTree}>El árbol está vacío.</Text>
+          <Text style={styles.emptyTree}>El arbol esta vacío.</Text>
         ) : (
           treeOutput.map((line, index) => (
             <Text key={index} style={styles.treeLine}>
@@ -198,6 +200,8 @@ export default function Arboles() {
         ))}
       </View>
     </ScrollView>
+    </SafeAreaView>
+
   );
 }
 
