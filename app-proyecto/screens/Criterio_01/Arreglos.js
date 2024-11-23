@@ -1,18 +1,35 @@
-/*
- 
+
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, {useState} from 'react'
+import ButtonsDisplay from '../../components/ButtonsDisplay'
+import BoxInput from '../../components/BoxInput';
+import { NumberInputChecker } from '../../components/InputChecker';
 
 export default function Arreglos() {
+
+  const [input, setInput] = useState("");
+  //Similar to display, you need to assign all the buttons to their current and unique "display" useState
+  const [display, setDisplay] = useState("")
+  const [errorHandler, setErrorHandler] = useState("");
   return (
     <View>
-      <Text>Arreglos</Text>
+       <Text>Display: {display}</Text>
+
+        <BoxInput
+          input = {input}
+          setInput = {setInput}
+          errorHandler= {errorHandler}
+        />
+
+        <ButtonsDisplay buttons={[
+        { name: "Declinar", toPass: () => NumberInputChecker(input, setInput,setDisplay, setErrorHandler,false)},
+        { name: "Aceptar", toPass: () => NumberInputChecker(input, setInput,setDisplay, setErrorHandler,false)},
+              ]} />
     </View>
   )
 }
 
 
- */
 
 
 
