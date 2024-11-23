@@ -1,6 +1,5 @@
 import { StyleSheet, Text, View, FlatList, Button, SafeAreaView } from 'react-native';
 import React, { useState } from 'react';
-const buckets = require('buckets-js');
 
 export default function Colas() {
   const [listaDeAviones, setListaDeAviones] = useState([
@@ -11,23 +10,23 @@ export default function Colas() {
     ["MiG-21", 2],
   ]);
 
-  const [colaDeAviones, setColaDeAviones] = useState(new buckets.Queue());
+  const [colaDeAviones, setColaDeAviones] = useState([]);
 
   const updateAvionCount = (index, avionName) => {
+    // Update the airplane count
     setListaDeAviones((prevList) =>
       prevList.map((avion, i) =>
         i === index && avion[1] > 0 ? [avion[0], avion[1] - 1] : avion
       )
     );
-    const newCola = new buckets.Queue(colaDeAviones.toArray());
-    newCola.add(avionName);
-    setColaDeAviones(newCola);
+
+    // Add to the queue
+    setColaDeAviones((prevQueue) => [...prevQueue, avionName]);
   };
 
   const despegarAvion = () => {
-    const newCola = new buckets.Queue(colaDeAviones.toArray());
-    newCola.dequeue(); // Remove the first airplane
-    setColaDeAviones(newCola);
+    // Remove the first airplane from the queue
+    setColaDeAviones((prevQueue) => prevQueue.slice(1));
   };
 
   return (
@@ -45,7 +44,7 @@ export default function Colas() {
                 {item[0]} - Count: {item[1]}
               </Text>
               <Button
-                title={`Add ${item[0]}`}
+                title={`Agregar`}
                 onPress={() => updateAvionCount(index, item[0])}
                 disabled={item[1] === 0}
               />
@@ -55,8 +54,8 @@ export default function Colas() {
 
         {/* Display the queue */}
         <Text style={styles.title}>Cola de Aviones</Text>
-        {colaDeAviones.size() > 0 ? (
-          colaDeAviones.toArray().map((avion, index) => (
+        {colaDeAviones.length > 0 ? (
+          colaDeAviones.map((avion, index) => (
             <Text key={index} style={styles.queueItem}>
               {index + 1}. {avion}
             </Text>
@@ -66,7 +65,11 @@ export default function Colas() {
         )}
 
         {/* Dequeue button */}
-        <Button title="Despegar Avión" onPress={despegarAvion} disabled={colaDeAviones.size() === 0} />
+        <Button
+          title="Despegar Avion"
+          onPress={despegarAvion}
+          disabled={colaDeAviones.length === 0}
+        />
       </View>
     </SafeAreaView>
   );
