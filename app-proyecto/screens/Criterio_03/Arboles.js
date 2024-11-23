@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TextInput, Button, ScrollView } from "react-native";
-const buckets = require("buckets-js");
+import { StyleSheet, Text, View, TextInput, Button, ScrollView, Alert } from "react-native";
+import { NumberInputChecker } from "../../components/InputChecker";
 
 class Node {
   constructor(value) {
@@ -106,36 +106,49 @@ class BinaryTree {
   }
 }
 
-
 export default function Arboles() {
   const [tree] = useState(new BinaryTree());
   const [element, setElement] = useState("");
   const [output, setOutput] = useState([]);
   const [treeOutput, setTreeOutput] = useState([]);
+  const [error, setError] = useState("");
 
   const agregarElemento = () => {
-    if (!element) {
-      alert("Ingrese un número.");
-      return;
-    }
-    tree.insert(Number(element));
-    setTreeOutput(tree.printTree());
-    setElement("");
+    NumberInputChecker(
+      element,
+      setElement,
+      () => {
+        if (tree.search(tree.root, Number(element))) {
+          setError(`El elemento ${element} ya existe en el árbol.`);
+        } else {
+          tree.insert(Number(element));
+          setTreeOutput(tree.printTree());
+          setError("");
+        }
+      },
+      setError,
+      false // Only allow whole numbers
+    );
   };
 
   const borrarElemento = () => {
     if (!element) {
-      alert("Ingrese un número.");
+      Alert.alert("Error", "Ingrese un número.");
       return;
     }
-    tree.delete(Number(element));
-    setTreeOutput(tree.printTree());
+    if (!tree.search(tree.root, Number(element))) {
+      setError(`El elemento ${element} no se encuentra en el árbol.`);
+    } else {
+      tree.delete(Number(element));
+      setTreeOutput(tree.printTree());
+      setError("");
+    }
     setElement("");
   };
 
   const buscarElemento = () => {
     if (!element) {
-      alert("Ingrese un número.");
+      Alert.alert("Error", "Ingrese un número.");
       return;
     }
     const found = tree.search(tree.root, Number(element));
@@ -160,6 +173,8 @@ export default function Arboles() {
         <Button title="Borrar" onPress={borrarElemento} />
         <Button title="Buscar" onPress={buscarElemento} />
       </View>
+
+      {error ? <Text style={styles.error}>{error}</Text> : null}
 
       <Text style={styles.subtitle}>Árbol:</Text>
       <View style={styles.treeBox}>
@@ -207,6 +222,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginBottom: 20,
+  },
+  error: {
+    color: "red",
+    marginBottom: 10,
   },
   subtitle: {
     fontSize: 20,
