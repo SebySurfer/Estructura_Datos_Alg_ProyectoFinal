@@ -6,7 +6,7 @@ import Arreglos from './screens/Criterio_01/Arreglos.js';
 import Colas from './screens/Criterio_01/Colas.js';
 import Pilas from './screens/Criterio_01/Pilas.js';
 import BusquedaBinaria from './screens/Criterio_02/BusquedaBinaria.js';
-
+import ListaDobleLigada from './screens/Criterio_02/ListaDobleLigada.js';
 import OrdenamientoQuicksort from './screens/Criterio_02/OrdenamientoQuicksort.js';
 import Arboles from './screens/Criterio_03/Arboles.js';
 /*
@@ -16,6 +16,6 @@ import Arboles from './screens/Criterio_03/Arboles.js';
 
 export default function App() {
   return (
-    <Arboles/>
+    <ListaDobleLigada/>
   )
 }
