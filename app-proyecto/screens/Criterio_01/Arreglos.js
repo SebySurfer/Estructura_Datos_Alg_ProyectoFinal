@@ -46,7 +46,7 @@ export default function Arreglos() {
           value={input}
           onChangeText={setInput}
           keyboardType="numeric"
-          placeholder="Ingrese el código del estudiante"
+          placeholder="Ingrese el codigo del estudiante"
         />
 
         {/* Error Message */}
